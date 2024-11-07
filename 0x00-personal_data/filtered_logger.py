@@ -2,7 +2,10 @@
 """ this module implement filtter logger """
 import logging
 import re
-from typing import List
+from typing import List, Tuple
+
+
+PII_FIELDS: Tuple[str, ...] = ("name", "email", "phone", "ssn", "password")
 
 
 def filter_datum(
@@ -44,3 +47,19 @@ class RedactingFormatter(logging.Formatter):
                     )
 
         return super().format(record)
+
+
+def get_logger() -> logging.Logger:
+    """ this function creates and configures a
+        logger for user with a redacting formatter """
+
+    logger = logging.logger.getLogger("user_data")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+
+    handler = logging.StreamHandler()
+    handler.setFormatter(RedactingFormatter(fields=PII_FIELDS))
+
+    logger.addHandler(handler)
+
+    return logger
