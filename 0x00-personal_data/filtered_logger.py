@@ -4,7 +4,7 @@ import logging
 import re
 from mysql import connector
 from typing import List, Tuple
-from mysql.connector  import connection
+from mysql.connector import connection
 
 
 PII_FIELDS: Tuple[str, ...] = ("name", "email", "phone", "ssn", "password")
@@ -65,6 +65,7 @@ def get_logger() -> logging.Logger:
     logger.addHandler(handler)
 
     return logger
+
 
 def get_db() -> connection.MySQLConnector:
     """
