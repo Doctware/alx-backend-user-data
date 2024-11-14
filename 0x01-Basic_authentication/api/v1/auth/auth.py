@@ -28,8 +28,20 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ returning None for the moment """
-        return None
+        """ implement authentication header 
+            if request is None, return None
+            if reqouest dosent contain the headers key
+            Authorization retunrs None
+            else return the vlaue of the rqquest auth
+        """
+        if request is None:
+            return None
+
+        header_auth = request.header.get("Authorization")
+        if not header_auth:
+            return None
+
+        return header_auth
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ returning none for the moment """
