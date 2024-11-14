@@ -8,8 +8,25 @@ class Auth:
     """ the class Auth: the unthentication class """
 
     def require_auth(self, path: str, excluded_path: List[str]) -> bool:
-        """ returning flase for the moment """
-        return False
+        """this methos return True if the path is not in the list
+            of strings excluded path
+
+            returns True if path is None
+            returns True if excluded_path is none or empty
+            returns flase is path in excluded path
+
+        """
+        if path is None or not excluded_path:
+            return True
+
+        normalize_path = path if path.endswith("/") else path + '/'
+
+        for p in excluded_path:
+            if p == normalize_path:
+                return False
+
+        return True
+    
 
     def authorization_header(self, request=None) -> str:
         """ returning None for the moment """
