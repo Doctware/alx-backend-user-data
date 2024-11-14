@@ -31,3 +31,10 @@ def unauthorized() -> str:
     """ if unauthrized access
     abort with error 401 """
     abort(401)
+
+
+@app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
+def forbidden():
+    """ if request is foridden then
+    abort with error 403 """
+    abort(403)
