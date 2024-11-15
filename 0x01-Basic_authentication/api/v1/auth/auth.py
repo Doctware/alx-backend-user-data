@@ -28,7 +28,7 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ implement authentication header 
+        """ implement authentication header
             if request is None, return None
             if reqouest dosent contain the headers key
             Authorization retunrs None
@@ -37,7 +37,7 @@ class Auth:
         if request is None:
             return None
 
-        header_auth = request.header.get("Authorization")
+        header_auth = request.headers.get("Authorization")
         if not header_auth:
             return None
 
