@@ -67,7 +67,7 @@ class BasicAuth(Auth):
         email and password
         """
 
-        if not user_email or not isinstance(user_emial, str):
+        if not user_email or not isinstance(user_email, str):
             return None
         if not user_pwd or not isinstance(user_pwd, str):
             return None
@@ -76,8 +76,8 @@ class BasicAuth(Auth):
         if not users or len(users) == 0:
             return None
 
-        for user in users:
-            if user.is_valid_password(user_pwd):
-                return user
+        user = users[0]
+        if user.is_valid_password(user_pwd):
+            return user
 
         return None
