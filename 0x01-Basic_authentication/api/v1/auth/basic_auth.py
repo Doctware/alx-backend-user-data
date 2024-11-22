@@ -99,7 +99,7 @@ class BasicAuth(Auth):
             return None
 
         base64_auth = self.extract_base64_authorizaton_header(auth_header)
-        if base63_auth is None:
+        if base64_auth is None:
             return None
 
         decoded_auth = self.decode_base64_authorization_header(base64_auth)
