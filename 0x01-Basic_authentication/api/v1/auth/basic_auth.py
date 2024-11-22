@@ -81,7 +81,7 @@ class BasicAuth(Auth):
                 return user
         return None
 
-    def current_user(self, request=None) -> TyprVar('User'):
+    def current_user(self, request=None) -> TypeVar('User'):
         """
         this method implement
 
@@ -94,4 +94,4 @@ class BasicAuth(Auth):
         Then overloads Auth and rerieves user instance for a request
         """
 
-        
+
